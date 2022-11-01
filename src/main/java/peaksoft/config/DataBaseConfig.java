@@ -5,7 +5,9 @@ import jakarta.persistence.Persistence;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
-import peaksoft.models.Client;
+import peaksoft.entity.Course;
+import peaksoft.entity.Student;
+import peaksoft.entity.Teacher;
 
 import java.util.Properties;
 
@@ -27,9 +29,11 @@ public class DataBaseConfig {
 
         properties.put(Environment.SHOW_SQL, "true");
 
-        Configuration configuration = new Configuration();
+        org.hibernate.cfg.Configuration configuration = new Configuration();
         configuration.addProperties(properties);
-        configuration.addAnnotatedClass(Client.class);
+        configuration.addAnnotatedClass(Course.class);
+        configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Teacher.class);
 
         return configuration.buildSessionFactory();
 
